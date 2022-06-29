@@ -18,6 +18,25 @@ from fastapi import Depends
 from fastapi import FastAPI
 from pydantic import BaseSettings
 
+# pinpoint
+##############################################
+from starlette_context.middleware import ContextMiddleware
+from starlette_context import context, plugins
+
+from pinpointPy import set_agent
+from pinpointPy.Fastapi import asyn_monkey_patch_for_pinpoint
+from starlette.middleware import Middleware
+from pinpointPy.Fastapi import PinPointMiddleWare
+
+middleware = [
+    Middleware(ContextMiddleware),
+    Middleware(PinPointMiddleWare)
+]
+asyn_monkey_patch_for_pinpoint()
+set_agent("fastapi-redis", "fastapi-redis", 'tcp:10.34.130.152:9999', -1, True)
+##############################################
+
+
 DEFAULT_KEY_PREFIX = 'is-bitcoin-lit'
 SENTIMENT_API_URL = 'https://api.senticrypt.com/v1/bitcoin.json'
 TWO_MINUTES = 60 + 60
