@@ -33,7 +33,7 @@ middleware = [
     Middleware(PinPointMiddleWare)
 ]
 asyn_monkey_patch_for_pinpoint()
-set_agent("fastapi-redis", "fastapi-redis", 'tcp:10.34.130.152:9999', -1, True)
+set_agent("fastapi-redis", "fastapi-redis", 'tcp:collector-agent:9999', -1, True)
 ##############################################
 
 
