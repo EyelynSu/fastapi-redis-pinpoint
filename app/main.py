@@ -89,7 +89,7 @@ class Config(BaseSettings):
 
 log = logging.getLogger(__name__)
 config = Config()
-app = FastAPI(title='FastAPI Redis Tutorial')
+app = FastAPI(title='FastAPI Redis Tutorial', middleware=middleware)
 redis = aioredis.from_url(config.redis_url, decode_responses=True)
 
 
